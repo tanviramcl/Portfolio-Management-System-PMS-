@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="Transaction" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Transaction">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TRANSACTION_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AMCL_BUY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AMCL_SALE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNIT_BUY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNIT_SALE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MF_BUY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MF_SALE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

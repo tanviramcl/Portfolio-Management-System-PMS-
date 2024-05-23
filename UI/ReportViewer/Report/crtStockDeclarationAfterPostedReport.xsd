@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="StockDeclarationAFterPostedReport" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StockDeclarationAFterPostedReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COMP_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="COMP_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOT_NOS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="F_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="F_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="SHARE_ALLOTED" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FY" type="xs:string" minOccurs="0" />
+              <xs:element name="RECORD_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BOOK_TO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BONUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RIGHT_APPR_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RIGHT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CASH" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AGM" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="REMARKS" type="xs:string" minOccurs="0" />
+              <xs:element name="POSTED" type="xs:string" minOccurs="0" />
+              <xs:element name="PDATE" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

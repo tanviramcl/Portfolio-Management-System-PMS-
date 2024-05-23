@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="InvByMFasPerSECrulesReport" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="InvByMFasPerSECrulesReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="F_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="SECT_MAJ_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="NO_COMPANY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_COST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_MARKET_PRICE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERCENT_PAIDUP" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

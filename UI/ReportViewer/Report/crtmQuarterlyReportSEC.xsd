@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="QuarterlyReport" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="QuarterlyReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="F_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="OPENING_BALANCE_CI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="INV_AMT_IPO_RIGHTS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PURCHASE_AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_INV_Q" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SOLD_AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CI_OF_SALE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CLOSING_BALANCE_COSTPRICE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CLOSING_BALANCE_MARKETPRICE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

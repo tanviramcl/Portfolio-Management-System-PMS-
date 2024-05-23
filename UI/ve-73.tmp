@@ -1,0 +1,260 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.Data.OracleClient;
+using System.Text;
+
+public partial class UI_Pf1s1Edit : System.Web.UI.Page
+{
+    CommonGateway commonGatewayObj = new CommonGateway();
+    Pf1s1DAO pf1s1DAOObj = new Pf1s1DAO();
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+           FillfundNameDropDownList();
+           fundNameDropDownList.Enabled = false;
+           FillCopanyNameDropDownList();
+           CopanyNameDropDownList.SelectedValue = "1";
+           CopanyNameDropDownList.Enabled = false;
+           FillDesignationDropDownList("ICB_DESIGNATION");
+        }
+     
+    }
+
+    protected void RadioButton4_CheckedChanged(object sender, EventArgs e)
+    {
+        tblChekInfo.Visible = false;
+    }
+
+    protected void RadioButton3_CheckedChanged(object sender, EventArgs e)
+    {
+        tblChekInfo.Visible = true;
+    }
+
+    protected void EditButton_Click(object sender, EventArgs e)
+    {
+        Hashtable htApplicant = new Hashtable();
+        Hashtable htUnitInfo = new Hashtable();
+        try
+        {
+            commonGatewayObj.BeginTransaction();
+            long ApplicantSeq = Sequence("APPLICANT_SEQ");
+            htApplicant.Add("ID", ApplicantSeq);
+            htApplicant.Add("NAME", NameTextBox.Text.ToString());
+            htApplicant.Add("DESIGNATION_ID", DesignationDropDownList.SelectedValue.ToString());
+            htApplicant.Add("COMPANY_ID", Convert.ToInt16(CopanyNameDropDownList.SelectedValue));
+            if (FatherNameTextBox.Text.ToString() != "")
+            {
+                htApplicant.Add("FATHER_NAME", FatherNameTextBox.Text.ToString());
+            }
+            if (HusbandNameTextBox.Text != "")
+            {
+                htApplicant.Add("HUSBAND_NAME", HusbandNameTextBox.Text.ToString());
+            }
+
+            htApplicant.Add("MOTHER_NAME", MotherNameTextBox.Text.ToString());
+            htApplicant.Add("ADDRESS", AddressTextBox.Text.ToString());
+            if (PhoneTextBox.Text.ToString() != "")
+            {
+                htApplicant.Add("MOBIL_TEL_NUMBER", PhoneTextBox.Text.ToString());
+            }
+            commonGatewayObj.Insert(htApplicant, "APPLICANT");//Save Applicant Information
+            long UnitInfoSeq = Sequence("UNIT_INFO_SEQ");
+            long ApplicantID = commonGatewayObj.GetMaxNo("APPLICANT", "ID");
+            int fundCode = Convert.ToInt16(fundNameDropDownList.SelectedValue);
+            string LoginID = Session["UserID"].ToString();
+            string LoginName = Session["UserName"].ToString();
+            string paymentStatus = "";
+
+            htUnitInfo.Add("ID", UnitInfoSeq);
+            htUnitInfo.Add("FUND_CODE", Convert.ToInt16(fundNameDropDownList.SelectedValue));
+            htUnitInfo.Add("FORM_SERIAL", FormSerialTextBox.Text.ToString());
+            htUnitInfo.Add("APPLICATION_DATE", Convert.ToDateTime(AplicationDateTextBox.Text).ToString("dd-MMM-yyyy"));
+            htUnitInfo.Add("APPLICANT_ID", ApplicantID);
+            htUnitInfo.Add("BO_ACCOUNT_NO", BOTextBox.Text.ToString());
+            htUnitInfo.Add("UNIT_OFFERED", Convert.ToInt32(NoofUnitOfferedTextBox.Text));
+            htUnitInfo.Add("UNIT_ACCEPT", Convert.ToInt32(NoAcceptedTextBox.Text));
+            htUnitInfo.Add("UNIT_FACE_VALUE", Convert.ToInt16(UnitFaceValueTextBox.Text));
+            htUnitInfo.Add("TOTAL_AMOUNT", Convert.ToDecimal(TotalAmountTextBox.Text));
+            if (RadioButton3.Checked)
+            {
+                paymentStatus = RadioButton3.Text.ToString();
+            }
+
+            else
+            {
+                paymentStatus = RadioButton4.Text.ToString();
+            }
+            htUnitInfo.Add("PAYMENT_STATUS", paymentStatus);
+            if (RadioButton3.Checked)
+            {
+                htUnitInfo.Add("CHEQUE_NO", ChecqueNoTextBox.Text.ToString());
+                htUnitInfo.Add("BANK_NAME", BankNameTextBox.Text.ToString());
+                htUnitInfo.Add("BRANCH_NAME", BranchAddressTextBox.Text.ToString());
+                htUnitInfo.Add("CHEQUE_ISSUE_DATE", Convert.ToDateTime(ChecqueIssueDateTextBox.Text).ToString("dd-MMM-yyyy"));
+            }
+            htUnitInfo.Add("ENTRY_BY_ID", LoginID);
+            htUnitInfo.Add("ENTRY_DATE", DateTime.Now);
+            commonGatewayObj.Insert(htUnitInfo, "UNIT_INFO");//SAVE UNIT_INFO 
+            commonGatewayObj.CommitTransaction();
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "alert('Saved Successfully');", true);
+        }
+        catch (Exception ex)
+        {
+
+            commonGatewayObj.RollbackTransaction();
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "alert('Saved Failed!!" + ex.ToString() + "');", true);
+        }
+    }
+    private void FillfundNameDropDownList()
+    {
+        DataTable dtFundName = commonGatewayObj.Select("SELECT *FROM NAV.FUND ORDER BY F_CD");
+        DataTable dtFundDropDown = new DataTable();
+        dtFundDropDown.Columns.Add("FundCode", typeof(int));
+        dtFundDropDown.Columns.Add("FundName", typeof(string));
+
+        DataRow drFundDropDown = dtFundDropDown.NewRow();
+        drFundDropDown["FundName"] = " ";
+        drFundDropDown["FundCode"] = "0";
+        dtFundDropDown.Rows.Add(drFundDropDown);
+
+        for (int loop = 0; loop < dtFundName.Rows.Count; loop++)
+        {
+            drFundDropDown = dtFundDropDown.NewRow();
+            drFundDropDown["FundName"] = dtFundName.Rows[loop]["F_NAME"].ToString();
+            drFundDropDown["FundCode"] = Convert.ToInt32(dtFundName.Rows[loop]["F_CD"]);
+            dtFundDropDown.Rows.Add(drFundDropDown);
+        }
+
+        fundNameDropDownList.DataSource = dtFundDropDown;
+        fundNameDropDownList.DataTextField = "FundName";
+        fundNameDropDownList.DataValueField = "FundCode";
+        fundNameDropDownList.SelectedValue = "10";
+        fundNameDropDownList.DataBind();
+    }
+    private void FillCopanyNameDropDownList()
+    {
+        DataTable dtCompanyName = commonGatewayObj.Select("SELECT *FROM ICB_COMPANY ORDER BY ID");
+        DataTable dtCompanyNameDropDown = new DataTable();
+        dtCompanyNameDropDown.Columns.Add("ID", typeof(int));
+        dtCompanyNameDropDown.Columns.Add("COMPANY_SHORT_NAME", typeof(string));
+
+        DataRow drCompanyNameDropDown = dtCompanyNameDropDown.NewRow();
+        drCompanyNameDropDown["COMPANY_SHORT_NAME"] = " ";
+        drCompanyNameDropDown["ID"] = "0";
+        dtCompanyNameDropDown.Rows.Add(drCompanyNameDropDown);
+
+        for (int loop = 0; loop < dtCompanyName.Rows.Count; loop++)
+        {
+            drCompanyNameDropDown = dtCompanyNameDropDown.NewRow();
+            drCompanyNameDropDown["COMPANY_SHORT_NAME"] = dtCompanyName.Rows[loop]["COMPANY_SHORT_NAME"].ToString();
+            drCompanyNameDropDown["ID"] = Convert.ToInt32(dtCompanyName.Rows[loop]["ID"]);
+            dtCompanyNameDropDown.Rows.Add(drCompanyNameDropDown);
+        }
+
+        CopanyNameDropDownList.DataSource = dtCompanyNameDropDown;
+        CopanyNameDropDownList.DataTextField = "COMPANY_SHORT_NAME";
+        CopanyNameDropDownList.DataValueField = "ID";        
+        CopanyNameDropDownList.DataBind();
+
+    }
+    private void FillDesignationDropDownList(string tableName)
+    {
+        DataTable dtDesignation = commonGatewayObj.Select("SELECT *FROM " + tableName +" ORDER BY DESIGNATION_NAME" );
+        DataTable dtDesignationDropDown = new DataTable();
+        dtDesignationDropDown.Columns.Add("ID", typeof(string));
+        dtDesignationDropDown.Columns.Add("DESIGNATION_NAME", typeof(string));
+
+        DataRow drDesignationDropDown = dtDesignationDropDown.NewRow();
+        drDesignationDropDown["ID"] = "0";
+        drDesignationDropDown["DESIGNATION_NAME"] = "";
+        dtDesignationDropDown.Rows.Add(drDesignationDropDown);
+
+        for (int loop = 0; loop < dtDesignation.Rows.Count; loop++)
+        {
+            drDesignationDropDown = dtDesignationDropDown.NewRow();
+            drDesignationDropDown["DESIGNATION_NAME"] = dtDesignation.Rows[loop]["DESIGNATION_NAME"].ToString();
+            drDesignationDropDown["ID"] = dtDesignation.Rows[loop]["ID"].ToString();
+            dtDesignationDropDown.Rows.Add(drDesignationDropDown);
+        }
+
+        DesignationDropDownList.DataSource = dtDesignationDropDown;
+        DesignationDropDownList.DataTextField = "DESIGNATION_NAME";
+        DesignationDropDownList.DataValueField = "ID";
+        DesignationDropDownList.DataBind();
+    }
+    protected void CopanyNameDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (CopanyNameDropDownList.SelectedItem.Text == "ICBAMCL" || CopanyNameDropDownList.SelectedItem.Text == "ICBCML" || CopanyNameDropDownList.SelectedItem.Text == "ISTCL")
+        {
+            FillDesignationDropDownList("COMPANY_DESG");
+        }
+        else
+        {
+            FillDesignationDropDownList("ICB_DESIGNATION");
+        }
+      
+    }
+    protected void FindButton_Click(object sender, EventArgs e)
+    {
+        
+      Find(FormSerialTextBox.Text.ToString());
+       
+
+    }
+    private void Find(string formSerialNo)
+    {
+        StringBuilder sbSqlString=new StringBuilder();
+        sbSqlString.Append("SELECT UNIT_INFO.*,APPLICANT.* FROM UNIT_INFO INNER JOIN APPLICANT ON UNIT_INFO.APPLICANT_ID");
+        sbSqlString.Append(" =APPLICANT.ID WHERE UNIT_INFO.FORM_SERIAL='"+formSerialNo+"'");
+        DataTable dtFindData = commonGatewayObj.Select(sbSqlString.ToString());
+        if(dtFindData.Rows.Count>0)
+        {
+            AplicationDateTextBox.Text =Convert.ToDateTime(dtFindData.Rows[0]["APPLICATION_DATE"]).ToString("dd-MMM-yyyy");
+            BOTextBox.Text = dtFindData.Rows[0]["BO_ACCOUNT_NO"].ToString();
+            NoofUnitOfferedTextBox.Text = dtFindData.Rows[0]["UNIT_OFFERED"].ToString();
+            NoAcceptedTextBox.Text = dtFindData.Rows[0]["UNIT_ACCEPT"].ToString();
+            UnitFaceValueTextBox.Text = dtFindData.Rows[0]["UNIT_FACE_VALUE"].ToString();
+            TotalAmountTextBox.Text = dtFindData.Rows[0]["TOTAL_AMOUNT"].ToString();
+
+            NameTextBox.Text = dtFindData.Rows[0]["NAME"].ToString();
+            DesignationDropDownList.SelectedValue = dtFindData.Rows[0]["DESIGNATION_ID"].ToString();
+            CopanyNameDropDownList.SelectedValue = dtFindData.Rows[0]["COMPANY_ID"].ToString();
+            FatherNameTextBox.Text = dtFindData.Rows[0]["FATHER_NAME"].Equals(DBNull.Value) ? "" : dtFindData.Rows[0]["FATHER_NAME"].ToString();
+            HusbandNameTextBox.Text = dtFindData.Rows[0]["HUSBAND_NAME"].Equals(DBNull.Value) ? "" : dtFindData.Rows[0]["HUSBAND_NAME"].ToString();
+            MotherNameTextBox.Text = dtFindData.Rows[0]["MOTHER_NAME"].ToString();
+            AddressTextBox.Text = dtFindData.Rows[0]["ADDRESS"].Equals(DBNull.Value) ? "" : dtFindData.Rows[0]["ADDRESS"].ToString();
+            PhoneTextBox.Text = dtFindData.Rows[0]["MOBIL_TEL_NUMBER"].Equals(DBNull.Value) ? "" : dtFindData.Rows[0]["MOBIL_TEL_NUMBER"].ToString();
+
+            if (string.Compare(dtFindData.Rows[0]["PAYMENT_STATUS"].ToString(), "cheque", true) == 0)
+            {
+                tblChekInfo.Visible = true;
+                RadioButton3.Checked = true;
+                BankNameTextBox.Text = dtFindData.Rows[0]["BANK_NAME"].ToString();
+                BranchAddressTextBox.Text = dtFindData.Rows[0]["BRANCH_NAME"].ToString();
+                ChecqueIssueDateTextBox.Text = Convert.ToDateTime(dtFindData.Rows[0]["CHEQUE_ISSUE_DATE"]).ToString("dd-MMM-yyyy");
+                ChecqueNoTextBox.Text = dtFindData.Rows[0]["CHEQUE_NO"].ToString();
+            }
+            else
+            {
+                tblChekInfo.Visible = false;
+                RadioButton4.Checked = true;
+            }
+        }
+    }
+    private void Update()
+    {
+    }
+
+}

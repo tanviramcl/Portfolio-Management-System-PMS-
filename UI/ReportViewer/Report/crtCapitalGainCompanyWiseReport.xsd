@@ -1,0 +1,34 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="SellBuyCheckReport" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SellBuyCheckReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="VCH_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="F_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="F_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="COMP_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="C.COMP_NM_x007C__x007C__x0027__x0028__x0027__x007C__x007C_T.COMP_CD_x007C__x007C__x0027__x0029__x0027_" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_TP" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="VCH_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="NO_SHARE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COST_RATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CRT_AFT_COM" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AMT_AFT_COM" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AVG_RATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="STOCK_EX" type="xs:string" minOccurs="0" />
+              <xs:element name="STOCK_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="OP_NAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

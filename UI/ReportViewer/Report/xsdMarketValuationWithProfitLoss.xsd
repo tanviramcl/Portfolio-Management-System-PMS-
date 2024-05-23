@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="MarketValiationWithProfitLoss" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MarketValiationWithProfitLoss">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="F_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FUND_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="BAL_DT_CTRL" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL_COMPANY_PROFIT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_SHARE_PROFIT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_COST_PROFIT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_MARKET_PRICE_PROFIT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PROFIT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TP_PROFIT" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL_COMPANY_LOSS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_SHARE_LOSS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_COST_LOSS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_MARKET_PRICE_LOSS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LOSS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TP_LOSS" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

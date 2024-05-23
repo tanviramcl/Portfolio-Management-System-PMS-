@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="MrktValWithNonListedSecuritiesAllFunds" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MrktValWithNonListedSecuritiesAllFunds">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="F_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="F_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="BAL_DT_CTRL" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL_COMPANY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_SHARE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_COST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_MARKET_PRICE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EROSION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NON_LISTED_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_INVEST_MARKET" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_INVEST_COST" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

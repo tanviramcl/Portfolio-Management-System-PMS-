@@ -1,0 +1,80 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="CompInfomationReport" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CompInfomationReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COMP_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="SECT_MAJ_CD" type="xs:string" minOccurs="0" />
+              <xs:element name="SECT_MAJ_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="SECT_MIN_CD" type="xs:string" minOccurs="0" />
+              <xs:element name="INSTR_CD" type="xs:string" minOccurs="0" />
+              <xs:element name="CAT_TP" type="xs:string" minOccurs="0" />
+              <xs:element name="ADD1" type="xs:string" minOccurs="0" />
+              <xs:element name="ADD2" type="xs:string" minOccurs="0" />
+              <xs:element name="REG_OFF" type="xs:string" minOccurs="0" />
+              <xs:element name="PRN_STH" type="xs:string" minOccurs="0" />
+              <xs:element name="OPN_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TAX_HDAY" type="xs:string" minOccurs="0" />
+              <xs:element name="TEL" type="xs:string" minOccurs="0" />
+              <xs:element name="TLX" type="xs:string" minOccurs="0" />
+              <xs:element name="PROD" type="xs:string" minOccurs="0" />
+              <xs:element name="PRO_VOL" type="xs:string" minOccurs="0" />
+              <xs:element name="SPNR" type="xs:string" minOccurs="0" />
+              <xs:element name="ATHO_CAP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PAID_CAP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NO_SHRS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FC_VAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MLOT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SBASE_RT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FLOT_DT_FM" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FLOT_DT_TO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BOK_CL_FDT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BOK_CL_TDT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MARGIN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AVG_RT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RT_UPD_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FLAG" type="xs:string" minOccurs="0" />
+              <xs:element name="AUDITOR" type="xs:string" minOccurs="0" />
+              <xs:element name="NS_ICB" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NS_UNIT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NS_MUTUAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PMARGIN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RISSU_DT_FM" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RISSU_DT_TO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PREMIUM" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CFLAG" type="xs:string" minOccurs="0" />
+              <xs:element name="MAR_FLOAT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MON_TO" type="xs:string" minOccurs="0" />
+              <xs:element name="TRADE_METH" type="xs:string" minOccurs="0" />
+              <xs:element name="CSEINSTR_CD" type="xs:string" minOccurs="0" />
+              <xs:element name="INDX_LST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BASE_UPD_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CDS" type="xs:string" minOccurs="0" />
+              <xs:element name="CSE_SID" type="xs:string" minOccurs="0" />
+              <xs:element name="CSE_RT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CSE_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ADC_RT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VALID" type="xs:string" minOccurs="0" />
+              <xs:element name="DSE_HIGH" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DSE_OPEN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DSE_LOW" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ISADD_HOWLACHARGE_DSE" type="xs:string" minOccurs="0" />
+              <xs:element name="ADD_HOWLACHARGE_AMTDSE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EXCEP_BUYSL_COMPCT_DSE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PROS_PUB_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IPOTYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="MARKETTYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="ISSUE_MNG" type="xs:string" minOccurs="0" />
+              <xs:element name="OP_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="UPD_DATE_TIME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

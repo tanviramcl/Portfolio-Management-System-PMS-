@@ -1,0 +1,367 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AMCLCommon_old.master.cs" Inherits="UI_AMCLCommon" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+<%@ Register Assembly="skmMenu" Namespace="skmMenu" TagPrefix="cc2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script runat="server">
+
+</script>
+
+<html>
+<head id="Head1" runat="server">
+    <title>Untitled Page</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="Stylesheet" type="text/css" href="../CSS/amcl.css" />
+    <link type="text/css" href="../Scripts/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" href="../Scripts/jquery-ui.min.css" rel="stylesheet" />
+       <link rel="Stylesheet" type="text/css" href="../CSS/stylemenu.css" media="screen"/>
+    <style type="text/css">
+        .style1
+        {
+            text-align: center;
+            color: #660066;
+            background-color: #CCCCCC;
+        }
+        .style2
+        {
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+            color: #660066;
+            font-family: Verdana;
+        }
+        .style3
+        {
+            font-family: "Courier New", Courier, monospace;
+            font-size: small;
+        }
+
+        .Submenu { margin-top:25px;margin-left:10px; }
+        .copyright {
+            margin-top:230px !important;  
+            margin-left:auto;
+            margin-right:auto; 
+            width:100%;
+             background-color:#776BA6;
+             color:#ffffff;
+             font-family: Arial;
+             font-size: 15px;
+             text-align: center;
+        }
+        </style>
+     <style type="text/css">
+        
+		
+            h1{
+                font-size:180px;
+                line-height:180px;
+                text-transform: uppercase;
+                color:#f9f9f9;
+                position:absolute;
+                text-shadow:0 1px 1px #ddd;
+                top:-25px;
+                left:-20px;
+                white-space: nowrap;
+            }
+            span.reference{
+                position:fixed;
+                left:10px;
+                bottom:10px;
+                font-size:18px;
+            }
+            span.reference a{
+                color:#776BA6;
+                text-decoration:none;
+                text-transform: uppercase;
+                text-shadow:0 1px 0 #fff;
+            }
+            span.reference a:hover{
+                color:#000;
+            }
+            .box{
+                margin-top:129px;
+                height:550px;
+				width:100%;
+                position:relative;
+                background:#fff url(click.png) no-repeat 380px 180px;
+				-moz-box-shadow:0px 0px 10px #aaa;
+				-webkit-box-shadow:0px 0px 10px #aaa;
+				
+            }
+            .box h2{
+				color:#f0f0f0;
+				padding:40px 10px;
+				text-shadow:1px 1px 1px #ccc;
+            }
+     </style>
+     
+    <script  type="text/javascript" src="../Scripts/jquery.js"></script>
+    <script type="text/javascript" src="../Scripts/jQuery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validate.js"></script>
+    <script  type="text/javascript" src="../Scripts/jquery.validation.net.webforms.js"></script>
+    <script  type="text/javascript" src="../Scripts/jquery.validation.net.webforms.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui.min.js"></script>
+    
+    <script type="text/javascript" src="../Scripts/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../Scripts/vendor/jquery.sortelements.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.bdt.min.js"></script>
+  
+
+</head>
+<body>
+    <form id="form1" runat="server" method="post">
+
+            <table width="1050"  align="center" cellpadding="0" cellspacing="0" >
+    <tr>
+        <td style="background-color:#776BA6; height:100px; font-size:xx-large;  text-align:center;">
+           
+           <span style="color:white;"> IAMCL INVESTMENT ANALYSIS AND PFMS</span>
+        </td>
+    </tr>
+    <tr>
+        <td align = "right">
+            <asp:Label ID="lblLoginName" runat="server" Text="Label" 
+                
+                style="color: #0000FF; font-weight: 700; font-size: small; font-family: 'Times New Roman', Times, serif"></asp:Label>
+        </td>
+    </tr>
+          </table>
+     <table width="1050"  align="center" cellpadding="0" cellspacing="0"  >
+             <tr>
+         <td style="background-color:#776BA6;">
+             <ul id="ldd_menu" class="ldd_menu">
+                 <%
+                     string userType = Session["UserType"].ToString();
+                   
+                     if (userType == "SA" || userType == "A")
+                     {
+                       
+                 %>
+                 <li>
+                     <span>Entry</span>
+                     <div class="ldd_submenu">
+                         <ul>
+                             <li class="ldd_heading">From</li>
+                             <li><a href="FundEntry.aspx">Fund Entry</a></li>
+                             <li><a href="FundTransactionEntry.aspx">Fund Transaction Entry</a></li>
+                             <li><a href="BookCloserEntry.aspx">Book Closer Entry</a></li>
+                             <li><a href="NonListedSecuritiesInvestmentEntryForm.aspx">Non Listed Securities Entry</a></li>
+                             <li><a href="HowlaDSEentryForm.aspx">DSE Howla Entry</a></li>
+                             <li><a href="HowlaDSEentryForm.aspx">CSE Howla Entry</a></li>
+                             <li><a href="CompanyInformation.aspx">Company Information Entry</a></li>
+                         </ul>
+                         <ul>
+                             <li class="ldd_heading">Matching</li>
+                             <li><a href="PortfolioFileUpload.aspx">Upload File</a></li>
+                             <li><a href="PortfolioMPUpdate.aspx">Update Market Price</a></li>
+                             <%--   <li><a href="#">Science &amp; Education</a></li>--%>
+                             <li><a href="PortfolioHowlaUpdate.aspx">Howla Update</a></li>
+                             <li><a href="DateWiseTransaction.aspx">Date Wise Transaction</a></li>
+                             <li><a href="BalanceUpdateProcess.aspx">Balance Update Process</a></li>
+                             <li><a href="FinalProcessing.aspx">Final Processing</a></li>
+                         </ul>
+                         <ul>
+                             <li class="ldd_heading">MOMS</li>
+                             <li><a href="CompanyInformationForCDS.aspx">Company Information For CDS</a></li>
+                             <li><a href="DematComp.aspx">Demat Comp</a></li>
+                             <li><a href="DematList.aspx">Demat List</a></li>
+                             <li><a href="SingleDemat.aspx">Single Demat(Fund)</a></li>
+                             <li><a href="GroupDemat.aspx">Group Demat(Fund)</a></li>
+
+                         </ul>
+                         <%--<a class="ldd_subfoot" href="#">+ New Deals</a>--%>
+                     </div>
+                 </li>
+
+                 <li>
+                     <span>Reports</span>
+                     <div class="ldd_submenu">
+                         <ul>
+                             <li class="ldd_heading"></li>
+                             <li><a href="SalePurchaseReportForm.aspx">Sale-Purchase Report</a></li>
+                             <li><a href="FundTransactionReport.aspx">Fund Transaction Report</a></li>
+                             <li><a href="BookCloserReport.aspx">Book Closer Report</a></li>
+                             <li><a href="CompanyWiseSecuritiesTransaction.aspx">Company Wise Securites Transaction Report</a></li>
+                             <li><a href="CompanyWiseAllPortfoliosReportDSEonly.aspx">Company Wise All Portfolios Report(DSE Only)</a></li>
+                             <li><a href="PortfolioWithNonListedSecurities.aspx">Portfolio With NonListed Securities</a></li>
+                             <li><a href="PortfolioStatementWithProfitLoss.aspx">Portfolio With Profit/Loss</a></li>
+                             <%--   <li><a href="#">Science &amp; Education</a></li>--%>
+                             <li><a href="MarketValuationWithProfitLoss.aspx">Market Valiation With Profit/Loss</a></li>
+                             <li><a href="MarketValuationWithNonListedSecuritesCompanyAndAllFunds.aspx">Market Valiation With Non Listed Securites Company/All Funds</a></li>
+                             <li><a href="AssetPercentageNAVSummaryAndPortfolio.aspx">Asset Percentage NAV/Summary/Portfolio</a></li>
+                             <li><a href="PortfolioSummaryForm.aspx">Portfolio Summary (Sector Wise)</a></li>
+                             <li><a href="PortFolioSummaryInPieChart.aspx">Portfolio Summary In Pie Chart (Sector Wise)</a></li>
+                             <li><a href="AssetPercentageCheck.aspx">Total Asset Percetage Check</a></li>
+                             <li><a href="MaxMinClosingPriceOfFundsReport.aspx">Max and Min Closing Price of ALL Funds</a></li>
+                             <li><a href="CapitalGainSummeryDateWise.aspx">Capital Gain Summary DateWise</a></li>
+                             <li><a href="CapitalGainCompanyWiseNew.aspx">Capital Gain Individual Fund (Company Wise)</a></li>
+
+                             <li><a href="CapitalGainCompanyWise.aspx">Capital Gain (Company Wise)</a></li>
+                             <li><a href="CapitalGainSummeryCompanyWiseDsc.aspx">Company Wise Capital Gain Summary Descending</a></li>
+                             <li><a href="SellBuyCheck.aspx">Sell Buy Check</a></li>
+                             <li><a href="PortfilioDematShare.aspx">Portfilio Demat Share</a></li>
+
+                         </ul>
+
+                         <%--<a class="ldd_subfoot" href="#">+ New Deals</a>--%>
+                     </div>
+                 </li>
+                 <li>
+                     <span>Analytical Reports</span>
+                     <div class="ldd_submenu">
+                         <ul>
+                             <li class="ldd_heading"></li>
+                             <li><a href="BalanceCheckReport.aspx">Balance Check</a></li>
+                             <li><a href="NonDemateSharesCheckReport.aspx">Non Demate Shares Check</a></li>
+                             <li><a href="NegativeBalanceCheckReport.aspx">Negative Balance Check</a></li>
+                             <li><a href="StockDeclarationBeforePostedReport.aspx">Stock Declaration Before Posted</a></li>
+                             <li><a href="StockDeclarationAfterPostedReport.aspx">Stock Declaration After Posted</a></li>
+                             <li><a href="CapitalGainAllFundsReport.aspx">Capital Gain of Funds</a></li>
+                             <li><a href="PortFolioCategoryWise.aspx">PortFolio CategoryWise</a></li>
+                             <li><a href="PortfilioDematShare.aspx">Portfilio Demat Share</a></li>
+                             <%--   <li><a href="#">Science &amp; Education</a></li>--%>
+                             <li><a href="PortfilioNonDematShare.aspx">Portfilio NonDemat Share</a></li>
+                             <li><a href="CapitalGainAllFundsReport.aspx">Capital Gain of Funds</a></li>
+                             <li><a href="PortFolioCategoryWise.aspx">PortFolio CategoryWise</a></li>
+                             <li><a href="PortfilioDematShare.aspx">Portfilio Demat Share</a></li>
+                             <li><a href="PortfilioNonDematShare.aspx">Portfilio NonDemat Share</a></li>
+
+                         </ul>
+                         <ul>
+                             <li class="ldd_heading">SEC Report</li>
+                             <li><a href="DailyReportToSEC.aspx">Daily</a></li>
+                             <li><a href="WeeklyReportToSEC.aspx">Weekly</a></li>
+                             <li><a href="QuarterlyReportToSEC.aspx">Quarterly</a></li>
+                             <li><a href="InvestmentByMFasPerSECrulesReportForm.aspx">Investment by the MF as per SEC Rules</a></li>
+                             <li><a href="StatementOfProfitOnSaleOfInvestment.aspx">Statement Of Profit On Sale Of Investment</a></li>
+                             <li><a href="PortFolioQuaterWise.aspx">Quarterly Portfolio Report With Previous Quarter</a></li>
+                         </ul>
+
+                         <%--<a class="ldd_subfoot" href="#">+ New Deals</a>--%>
+                     </div>
+                 </li>
+                 <li>
+                     <span>Reports(Accounts)</span>
+                     <div class="ldd_submenu">
+                         <ul>
+                             <li class="ldd_heading"></li>
+                             <li><a href="ReceivablePayableDSEandCSESeparate.aspx">Receivable/Payable(DSE and CSE Separate)</a></li>
+                             <li><a href="ReceivablePayableFundWise.aspx">Sell Buy Fundwise Reconcilation</a></li>
+                             <li><a href="ReconcilationDrandCR.aspx">Reconcilation DR/CR</a></li>
+                             <li><a href="CapitalGainSummaryStockWise.aspx">Capital Gain Summary Stock Wise</a></li>
+                             <li><a href="StatementOfProfitOnSaleOfInvestment.aspx">Statement Of Profit On Sale Of Investment</a></li>
+
+                         </ul>
+
+                         <ul>
+                             <li class="ldd_heading">NAV</li>
+                             <li><a href="CloseEndNAVLetterReport.aspx">Close End NAV Letter</a></li>
+                             <li><a href="CloseEndNAVpaperCutting.aspx">Paper Cutting of Close End MF</a></li>
+
+
+                         </ul>
+                         <ul>
+                             <li class="ldd_heading">Salary</li>
+                             <li><a href="BankAdvice.aspx">Monthly Bank Advice(Salary)</a></li>
+                             <li><a href="MonthlyDeductionOfIAMCLemployeesReportForm.aspx">Monthly Deduction of IAMCL Employees Report</a></li>
+                             <li><a href="ReportViewer/SelectionScaleCalculation.aspx">Selection Scale 2009-2010</a></li>
+
+
+                         </ul>
+
+                         <%--<a class="ldd_subfoot" href="#">+ New Deals</a>--%>
+                     </div>
+                 </li>
+                 <li>
+                     <span><a href="../Default.aspx" style="color: #fff;font-size: 13px;font-weight: normal;">Logout</a></span>
+                    <%-- <span>Logout</span>
+                     <div class="ldd_submenu">
+                         <ul>
+                             <li><a href="../Default.aspx">Logout</a></li>
+                         </ul>
+                     </div>--%>
+                 </li>
+                 <%
+                     }
+                     else
+                     {
+                         Response.Write("You are not admin user");
+                 %>
+
+
+                 <%
+                     }
+
+                 %>
+             </ul>
+
+         </td>
+      </tr>
+   
+    </table>
+    <table width="1050"  align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center">        
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"> 
+           <br />       
+           <br />    
+           <br />    
+           <br />    
+           <br />    
+           <br />    
+          
+           <br />    
+           <br />    
+        </asp:ContentPlaceHolder>
+        </td>
+      </tr>
+    </table>   
+   
+            <p class="copyright">Design & Developed by ICBAMCL Computer Department.
+            Copyright&copy; ICBAMCL </p>
+   
+      
+      <%-- <div>
+        <MARQUEE  id="mark">hi hi</MARQUEE>
+        </div>--%>
+    </form>
+       <%-- <script type="text/javascript">
+            var mar=document.getElementById("mark");
+            var text='<%=text %>';
+            mar.innerHTML = text;
+           // alert(mar.innerHTML);
+        </script>--%>
+
+      <script type="text/javascript">
+            $(function() {
+				/**
+				 * the menu
+				 */
+				var $menu = $('#ldd_menu');
+				
+				/**
+				 * for each list element,
+				 * we show the submenu when hovering and
+				 * expand the span element (title) to 510px
+				 */
+				$menu.children('li').each(function(){
+					var $this = $(this);
+					var $span = $this.children('span');
+					$span.data('width',$span.width());
+					
+					$this.bind('mouseenter',function(){
+						$menu.find('.ldd_submenu').stop(true,true).hide();
+						$span.stop().animate({'width':'350px'},300,function(){
+							$this.find('.ldd_submenu').slideDown(300);
+						});
+					}).bind('mouseleave',function(){
+						$this.find('.ldd_submenu').stop(true,true).hide();
+						$span.stop().animate({'width':$span.data('width')+'px'},300);
+					});
+				});
+            });
+        </script>	
+</body>
+</html>

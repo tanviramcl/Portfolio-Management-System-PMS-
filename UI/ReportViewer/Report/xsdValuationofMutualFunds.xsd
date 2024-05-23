@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="Table" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Table">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COMP_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMP_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="FACE_VALUE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NO_SHARES" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COSTRATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CAT_ID" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CAT_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAN_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TOT_MARKET_PRICE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MARKET_RATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="APPRICIATION_ERROTION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERCENT_OF_APRE_EROSION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNREALIZEDGAIN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNREALIZEDGAINPERUNIT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NAV" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DISCOUNTNAV" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNREALIZEDLOSSPORFITBASEDONNAV" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RQUIRREDPROVISIONFINAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNREALIZEDLOSSRECOVRY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FAIRMARKETVALUE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

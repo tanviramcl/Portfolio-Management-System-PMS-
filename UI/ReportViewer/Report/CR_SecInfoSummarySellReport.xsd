@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="SecInfoSummarySell" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SecInfoSummarySell">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="F_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FUND_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="SELL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NO_OF_SHARE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PROFIT" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

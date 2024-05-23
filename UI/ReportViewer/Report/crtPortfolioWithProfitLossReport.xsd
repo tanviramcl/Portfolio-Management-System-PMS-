@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="PortfolioWithProfitLoss" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PortfolioWithProfitLoss">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="F_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="COMP_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="SECT_MAJ_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="SECT_MAJ_CD" type="xs:string" minOccurs="0" />
+              <xs:element name="TOT_NOS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COST_RT_PER_SHARE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TCST_AFT_COM" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DSE_RT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DSE_RT_IN" type="xs:string" minOccurs="0" />
+              <xs:element name="TOT_MARKET_PRICE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RATE_DIFF" type="xs:decimal" minOccurs="0" />
+              <xs:element name="APPRICIATION_ERROTION" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

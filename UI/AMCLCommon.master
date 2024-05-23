@@ -1,0 +1,356 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AMCLCommon.master.cs" Inherits="UI_AMCLCommon" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Assembly="skmMenu" Namespace="skmMenu" TagPrefix="cc2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html>
+<head id="Head1" runat="server">
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="UI Elements: Large Drop Down Menu" />
+    <meta name="keywords" content="jquery, drop down, menu, navigation, large, mega " />
+    <link rel="Stylesheet" type="text/css" href="../CSS/stylemenu.css" media="screen" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">    </asp:ContentPlaceHolder>
+    <link rel="Stylesheet" type="text/css" href="../CSS/amcl.css" />
+    <link type="text/css" href="../Scripts/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" href="../Scripts/jquery-ui.min.css" rel="stylesheet" />
+    <%--     <link href="../CSS/jquery.dataTables.min.css" rel="stylesheet" />--%>
+
+    <link href="../CSS/vendor/font-awesome.css" rel="stylesheet" />
+    <link href="../CSS/jquery.bdt.css" rel="stylesheet" />
+    <style type="text/css">
+        .style1 {
+            text-align: center;
+            color: #660066;
+            background-color: #CCCCCC;
+        }
+
+        .style2 {
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+            color: #660066;
+            font-family: Verdana;
+        }
+
+        .style3 {
+            font-family: "Courier New", Courier, monospace;
+            font-size: small;
+        }
+
+        .Submenu {
+            margin-top: 25px;
+            margin-left: 10px;
+        }
+
+        .copyright {
+            margin-top: 230px !important;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            background-color: #776BA6;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 15px;
+            text-align: center;
+        }
+    </style>
+    <style type="text/css">
+        body {
+            /*background:#f0f0f0;*/
+            font-family: "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 180px;
+            line-height: 180px;
+            text-transform: uppercase;
+            color: #f9f9f9;
+            position: absolute;
+            text-shadow: 0 1px 1px #ddd;
+            top: -25px;
+            left: -20px;
+            white-space: nowrap;
+        }
+
+        span.reference {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            font-size: 18px;
+        }
+
+            span.reference a {
+                color: #776BA6;
+                text-decoration: none;
+                text-transform: uppercase;
+                text-shadow: 0 1px 0 #fff;
+            }
+
+                span.reference a:hover {
+                    color: #000;
+                }
+
+        .box {
+            margin-top: 129px;
+            height: 550px;
+            width: 100%;
+            position: relative;
+            background: #fff url(click.png) no-repeat 380px 180px;
+            -moz-box-shadow: 0px 0px 10px #aaa;
+            -webkit-box-shadow: 0px 0px 10px #aaa;
+        }
+
+            .box h2 {
+                color: #f0f0f0;
+                padding: 40px 10px;
+                text-shadow: 1px 1px 1px #ccc;
+            }
+    </style>
+
+    <script type="text/javascript" src="../Scripts/jquery.js"></script>
+    <script type="text/javascript" src="../Scripts/jQuery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validate.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validation.net.webforms.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validation.net.webforms.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui.min.js"></script>
+
+
+
+    <script type="text/javascript" src="../Scripts/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../Scripts/vendor/jquery.sortelements.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.bdt.min.js"></script>
+
+
+</head>
+<body>
+    <form id="form1" runat="server" method="post">
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="background-color: #776BA6; height: 100px; font-size: xx-large; text-align: center;">
+
+                    <span style="color: white;">IAMCL INVESTMENT ANALYSIS AND PFMS</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <asp:Label ID="lblLoginName" runat="server" Text="Label"
+                        Style="color: #0000FF; font-weight: 700; font-size: small; font-family: 'Times New Roman', Times, serif"></asp:Label>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="background-color: #776BA6;">
+                    <ul id="ldd_menu" class="ldd_menu">
+                        <%
+
+                            System.Data.DataTable dtchildodsubMenuList = (System.Data.DataTable)Session["Child_of_submenu"];
+                            if (dtchildodsubMenuList.Rows.Count > 0)
+                            {
+                                string menuList = "";
+                                string subMenuList = "";
+                                for (int i = 0; i < dtchildodsubMenuList.Rows.Count; i++)
+                                {
+
+                                    if (menuList == "")
+                                    {
+                                        menuList = "0";
+                                    }
+                                    menuList = menuList + "," + dtchildodsubMenuList.Rows[i]["MENU_ID"].ToString();
+                                    if (subMenuList == "")
+                                    {
+                                        subMenuList = "0";
+                                    }
+
+                                    subMenuList = subMenuList + "," + dtchildodsubMenuList.Rows[i]["SUBMENU_ID"].ToString();
+
+                                }
+
+                                Session["menu_list"] = menu_list(menuList);
+                                Session["submenu_list"] = Sub_menu_list(subMenuList);
+
+                            }
+                        %>
+
+                        <%
+
+                            System.Data.DataTable dtMenuList = (System.Data.DataTable)Session["dtMenuName"];
+                            if (dtMenuList.Rows.Count > 0)
+                            {
+                                for (int j = 0; j < dtMenuList.Rows.Count; j++)
+                                {
+
+                        %>
+
+                        <li>
+
+                            <span><%   Response.Write(dtMenuList.Rows[j]["MENU_NAME"].ToString());   %></span>
+                            <div class="ldd_submenu">
+                                <ul>
+                                    <%
+                                        System.Data.DataTable dtdsubMenuList = (System.Data.DataTable)Session["Child_of_submenu"];
+                                        string SubMenuList = "";
+                                        if (dtdsubMenuList.Rows.Count > 0)
+                                        {
+
+
+                                            for (int i = 0; i < dtdsubMenuList.Rows.Count; i++)
+                                            {
+
+                                                if (SubMenuList == "")
+                                                {
+                                                    SubMenuList = "0";
+                                                }
+                                                SubMenuList = SubMenuList + "," + dtdsubMenuList.Rows[i]["SUBMENU_ID"].ToString();
+                                            }
+                                        }
+
+                                        System.Data.DataTable dtGetSubMenubyID = GetSub_menu_byMenuId(SubMenuList, dtMenuList.Rows[j]["MENU_ID"].ToString());
+
+                                        if (dtGetSubMenubyID.Rows.Count > 0)
+                                        {
+                                            for (int k = 0; k < dtGetSubMenubyID.Rows.Count; k++)
+                                            {
+
+                                                if (!string.IsNullOrEmpty(dtGetSubMenubyID.Rows[k]["SUBMENU_NAME"].ToString()))
+                                                {
+                                    %>
+                                    <li class="ldd_heading"><%   Response.Write(dtGetSubMenubyID.Rows[k]["SUBMENU_NAME"].ToString());   %></li>
+
+                                    <%
+                                        }
+
+
+                                        System.Data.DataTable dtchildOfSubMenuList = (System.Data.DataTable)Session["Child_of_submenu"];
+                                        string childOfSubMenuList = "";
+                                        if (dtchildOfSubMenuList.Rows.Count > 0)
+                                        {
+
+
+                                            for (int m = 0; m < dtchildOfSubMenuList.Rows.Count; m++)
+                                            {
+
+                                                if (childOfSubMenuList == "")
+                                                {
+                                                    childOfSubMenuList = "0";
+                                                }
+                                                childOfSubMenuList = childOfSubMenuList + "," + dtchildOfSubMenuList.Rows[m]["CHILD_OF_SUBMENU_ID"].ToString();
+                                            }
+                                        }
+
+
+
+                                        Session["child_of_sub_menu_list"] = Childof_Sub_menu_list(childOfSubMenuList, dtMenuList.Rows[j]["MENU_ID"].ToString(), dtGetSubMenubyID.Rows[k]["SUBMENU_ID"].ToString());
+                                        System.Data.DataTable dtChildSuBMenuList = (System.Data.DataTable)Session["child_of_sub_menu_list"];
+
+                                        if (dtChildSuBMenuList.Rows.Count > 0)
+                                        {
+                                            for (int l = 0; l < dtChildSuBMenuList.Rows.Count; l++)
+                                            {
+                                    %>
+
+                                    <li><a href="<%   Response.Write(dtChildSuBMenuList.Rows[l]["URL"].ToString());   %>"><%   Response.Write(dtChildSuBMenuList.Rows[l]["CHILD_OF_SUBMENU_NAME"].ToString());   %> </a></li>
+                                    <%
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    %>
+                                </ul>
+
+
+                            </div>
+                        </li>
+                        <% 
+
+
+
+                                }
+                            }
+                        %>
+                        <li><span><a href="../Default.aspx" style="color: #fff; font-size: 13px; font-weight: normal;">Logout</a></span></li>
+                    </ul>
+
+                </td>
+            </tr>
+
+        </table>
+        <table width="96%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+                        <br />
+                        <br />
+                    </asp:ContentPlaceHolder>
+                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+                        <br />
+                        <br />
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="center">
+                    <p class="copyright">
+                        Copyright&copy; ICBAMCL. Design & Developed by ICBAMCL Computer Department.
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+
+    </form>
+
+    <script type="text/javascript">
+        $(function () {
+            /**
+            * the menu
+            */
+            var $menu = $('#ldd_menu');
+
+            /**
+            * for each list element,
+            * we show the submenu when hovering and
+            * expand the span element (title) to 510px
+            */
+            $menu.children('li').each(function () {
+                var $this = $(this);
+                var $span = $this.children('span');
+                $span.data('width', $span.width());
+
+                $this.bind('mouseenter', function () {
+                    $menu.find('.ldd_submenu').stop(true, true).hide();
+                    $span.stop().animate({ 'width': '350px' }, 300, function () {
+                        $this.find('.ldd_submenu').slideDown(300);
+                    });
+                }).bind('mouseleave', function () {
+                    $this.find('.ldd_submenu').stop(true, true).hide();
+                    $span.stop().animate({ 'width': $span.data('width') + 'px' }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

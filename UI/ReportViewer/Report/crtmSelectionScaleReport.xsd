@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="SelectionScale" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SelectionScale">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:string" minOccurs="0" />
+              <xs:element name="NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="DESIG" type="xs:string" minOccurs="0" />
+              <xs:element name="ICB_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTH" type="xs:string" minOccurs="0" />
+              <xs:element name="BASIC_AS_30JUN09" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BASIC_CURRENT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="HOUSE_RENT_AS_30JUN09" type="xs:decimal" minOccurs="0" />
+              <xs:element name="HOUSE_RENT_NEW" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BASIC_AS_PREV" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FIXATION_BASIC" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ALLOWANCE_BASIC_DIFF" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ALLOWANCE_HOUSE_RENT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ALLOWANCE_PENSION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ALLOWANCE_DEPUTATION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GROSS_ALLOWANCE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DEDUCTION_PF_OWN_CON" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DEDUCTION_PENSION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GROSS_DEDUCTION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ARREAR_AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NET_PAYABLE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

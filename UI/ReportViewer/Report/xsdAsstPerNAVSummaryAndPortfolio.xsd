@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="AsstPerNAVSummaryAndPortfolio" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AsstPerNAVSummaryAndPortfolio">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SECT_MAJ_NM" type="xs:string" minOccurs="0" />
+              <xs:element name="F_CD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SECT_MAJ_CD" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTALSHARES" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SUM_x0028_P.RT_ACM_x0029_" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTALCOST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTALCOSTPERCENT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SUM_x0028_P.M_P_x0029_" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CS_ASSET" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTALASSETVALUE_MAR" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNL_P" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NONLISTVAL" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
